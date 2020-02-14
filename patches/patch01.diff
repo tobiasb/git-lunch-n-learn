@@ -1,0 +1,31 @@
+diff --git a/send_secret_santas.py b/send_secret_santas.py
+index 5f090c3..ce75b4b 100644
+--- a/send_secret_santas.py
++++ b/send_secret_santas.py
+@@ -8,7 +8,7 @@ from twilio.rest import Client
+ def read_participants(file_name):
+     people = []
+ 
+-    with open(file_name) as cvs_file:
++    with open(file_name, "r") as cvs_file:
+         csv_reader = csv.DictReader(cvs_file)
+         row_count = 0
+         for row in csv_reader:
+@@ -32,7 +32,7 @@ if __name__ == "__main__":
+         print('Error: Make sure the following env vars are set: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_SENDER_PHONE_NUMBER')
+         exit(1)
+ 
+-    parser = argparse.ArgumentParser(description='Generates secret santa mappings and notifies people via sms')
++    parser = argparse.ArgumentParser(description='Generates the secret santa mappings and notifies people via sms')
+     parser.add_argument('participants_file', help='path to csv file. See README.md for format')
+     parser.add_argument('-d', '--dryrun', help='does not actually send the text message', action='store_true')
+     args = parser.parse_args()
+@@ -45,7 +45,7 @@ if __name__ == "__main__":
+ 
+     for pair in mapping:
+         if args.dryrun:
+-            print('{} is buying a gift for {}'.format(pair['giver']['name'], pair['receiver']['name']))
++            print('{} will be buying a gift for {}'.format(pair['giver']['name'], pair['receiver']['name']))
+         else:
+             body = u"Hello {}. This is Elfbot 3000. You are {}'s secret Santa!".format(pair['giver']['name'], pair['receiver']['name'])
+             client = Client(account_sid, auth_token)
