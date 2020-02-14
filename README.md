@@ -52,13 +52,12 @@ git push
 git branch improve-tests
 git checkout improve-tests
 
-subl test_secret_santa_generator.py
-< add test case >
+git apply ../../patches/patch00.diff && git commit -am "Add test case" && git push
 
 subl requirements.txt
 < update version of pytest >
 
-< commit changes using GUI >
+< commit changes using GUI using selective staging >
 
 git push --set-upstream origin improve-tests
 ```
@@ -123,27 +122,75 @@ git apply ../../patches/patch01.diff && git commit -am "Improve file handling" &
 git checkout my-branch
 git apply ../../patches/patch02.diff && git commit -am "Update Twilio package"
 git apply ../../patches/patch03.diff && git commit -am "Improve documentation"
+git apply ../../patches/patch04.diff && git commit -am "Update to correct Twilio package"
 git push
 
 < show my-branch relative to master in GUI >
 
 git rebase master
 
-<show what git push would do >
+<show what "git push" and "git status" would say >
 
 git push -f
 ```
 
-## Resolving Conflicts
+## Stashing
+*Based on result of Rebasing*
+
+- git stash is a stack of backed up changes
+
+**Demo:**
+```
+< edit test_secret_santa_generator.py >
+git checkout master
+
+git stash
+git stash pop
+```
+
 
 ## Squashing
+*Based on result of Rebasing*
 
-## Stashing
+**Demo:**
+```
+git rebase master -i
+git push -f
+```
+
+
+## Resolving Conflicts
+
+**Demo:**
+```
+git checkout master
+git apply ../../patches/patch05.diff && git commit -am "Make tests even better"
+git push
+
+git checkout my-branch
+git rebase master
+
+< open conflict in pycharm -> right click -> Git -> Resolve Conflicts... -> Merge >
+
+git add test_secret_santa_generator.py
+git rebase --continue
+```
+
+- Show aborting a rebase `git rebase --abort`
+
 
 ## Ignoring files/directories
 
+- Add files/directories that should not be commited to `.gitignore`
 
-.gitignore
+**Demo:**
+```  
+echo "super secret password" > credentials.txt
+git status
+vi .gitignore
+git status
+```
+
 
 ## Tooling
 

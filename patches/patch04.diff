@@ -1,0 +1,10 @@
+diff --git a/requirements.txt b/requirements.txt
+index ec7082d..b250bee 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1,2 @@
+ pytest==4.7.0
+-twilio==6.35.0
+\ No newline at end of file
++twilio==6.38.0
+\ No newline at end of file

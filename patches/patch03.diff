@@ -7,7 +7,7 @@ index da56fe2..4f5f2cb 100644
  
  def person_from(name, couple_id):
 -    return {'name': name, 'couple_id': couple_id}
-+    return {'name': name, 'couple_id': couple_id} # Some comment that's relevant
++    return {'name': name, 'couple_id': couple_id}  # Some comment that's relevant
  
  
  def test_individuals():
