@@ -24,18 +24,16 @@ Clone sample repos
 ```
 cd secret-santa-sms-a
 
-subl requirements.txt
-< update version of pytest >
+subl secret_santa_generator.py
+< remove extra whitespace >
 git status
-git add requirements.txt
+git add secret_santa_generator.py
 git status
-git commit -m "Update version of pytest"
+git commit -m "Fix witespace"
 git status
 git push
 < show tree in GUI >
 ```
-
-- Show partial staging using GUI tool
 
 #### Lifecycle of a local change
 
@@ -52,12 +50,10 @@ git push
 git branch improve-tests
 git checkout improve-tests
 
-git apply ../../patches/patch00.diff && git commit -am "Add test case" && git push
+git apply ../../patches/patch00a.diff && git commit -am "Add test case"
+git apply ../../patches/patch00b.diff && git commit -am "Update pytest version"
 
-subl requirements.txt
-< update version of pytest >
-
-< commit changes using GUI using selective staging >
+< commit changes using GUI using partial staging >
 
 git push --set-upstream origin improve-tests
 ```

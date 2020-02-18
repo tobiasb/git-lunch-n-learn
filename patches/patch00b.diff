@@ -1,0 +1,9 @@
+diff --git a/requirements.txt b/requirements.txt
+index 2aef854..4b9b959 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1,2 @@
+-pytest==4.6.6
++pytest==4.6.7
+ twilio==6.33.0
+\ No newline at end of file
